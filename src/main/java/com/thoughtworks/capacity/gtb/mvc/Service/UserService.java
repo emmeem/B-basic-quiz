@@ -16,11 +16,19 @@ public class UserService {
 
     public void save(UserRequest request) {
         User user = User.builder()
-                    .name(request.getName())
+                    .name(request.getUsername())
                     .password(request.getPassword())
                     .email(request.getEmail())
                     .build();
         userRepository.save(user);
+    }
+
+    public User userLogin(String username, String password) {
+        User user = userRepository.findByName(username);
+        if(user.getPassword().equals(password)) {
+            return user;
+        }
+        return null;
     }
 
 }
