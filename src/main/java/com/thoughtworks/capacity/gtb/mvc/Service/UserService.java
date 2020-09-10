@@ -2,7 +2,9 @@ package com.thoughtworks.capacity.gtb.mvc.Service;
 
 import com.thoughtworks.capacity.gtb.mvc.Domain.User;
 import com.thoughtworks.capacity.gtb.mvc.Dto.UserRequest;
+import com.thoughtworks.capacity.gtb.mvc.Exception.LoginErrorException;
 import com.thoughtworks.capacity.gtb.mvc.Exception.UserIsExistException;
+import com.thoughtworks.capacity.gtb.mvc.Exception.UserNotFoundException;
 import com.thoughtworks.capacity.gtb.mvc.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -30,10 +32,14 @@ public class UserService {
 
     public User userLogin(String username, String password) {
         User user = userRepository.findByName(username);
+        if(user == null) {
+            throw new UserNotFoundException("用户不存在");
+        }
         if(user.getPassword().equals(password)) {
             return user;
         }
-        return null;
+        throw new LoginErrorException("用户名或密码错误");
+
     }
 
 }
