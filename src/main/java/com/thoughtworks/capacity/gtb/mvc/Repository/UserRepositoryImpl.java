@@ -10,17 +10,18 @@ import java.util.Map;
 @Repository
 public class UserRepositoryImpl implements UserRepository{
 
-    private final Map<String,User> users = new HashMap<>();
+    private final Map<Integer,User> users = new HashMap<>();
 
     @Override
-    public User save(User user) {
-        user.setId(users.size() + 1);
-        users.put(user.getName(),user);
-        return user;
+    public Integer save(User user) {
+        user.setId(users.size()+1);
+        users.put(user.getId(),user);
+        return user.getId();
     }
 
+
     @Override
-    public User findByName(String username) {
-        return users.get(username);
+    public User findById(Integer id) {
+        return users.get(id);
     }
 }

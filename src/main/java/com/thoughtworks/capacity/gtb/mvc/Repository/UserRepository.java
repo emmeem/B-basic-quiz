@@ -5,7 +5,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserRepository {
-    User save(User user);
 
-    User findByName(String username);
+    Integer save(User user);
+
+    User findById(Integer id);
 }
