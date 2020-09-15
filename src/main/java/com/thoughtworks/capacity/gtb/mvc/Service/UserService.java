@@ -2,10 +2,13 @@ package com.thoughtworks.capacity.gtb.mvc.Service;
 
 import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
 import com.thoughtworks.capacity.gtb.mvc.Domain.User;
+import com.thoughtworks.capacity.gtb.mvc.Exception.EducationInfoIsNotExist;
+import com.thoughtworks.capacity.gtb.mvc.Exception.UserNotFoundException;
 import com.thoughtworks.capacity.gtb.mvc.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -17,7 +20,11 @@ public class UserService {
     }
 
     public User getUserById(Integer id) {
-        return userRepository.findById(id);
+        User user = userRepository.findById(id);
+        if(user != null) {
+            return user;
+        }
+        throw new UserNotFoundException("用户不存在");
     }
 
     public Integer addUser(User user) {
@@ -30,6 +37,10 @@ public class UserService {
     }
 
     public List<Education> getEducationById(Integer id) {
+        List<Education> education = userRepository.findEducationByid(id);
+        if(education.isEmpty()) {
+            throw new EducationInfoIsNotExist("教育信息不存在");
+        }
         return userRepository.findEducationByid(id);
     }
 

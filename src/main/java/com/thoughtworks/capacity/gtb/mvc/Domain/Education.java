@@ -17,9 +17,9 @@ public class Education {
 
     private Integer year;
 
-    @Length(min=1,max=128)
+    @Length(min=1,max=256)
     private String title;
 
-    @Length(min=1, max=2048)
+    @Length(min=1, max=4096)
     private String description;
 }

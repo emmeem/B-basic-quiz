@@ -19,15 +19,15 @@ public class User {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Integer id;
 
-    @Length(min=1,max=8)
+    @Length(min=1,max=16)
     private String name;
 
     @Min(17)
     private Integer age;
 
-    @Length(min=1,max=216)
+    @Length(min=8,max=512)
     private String avatar;
 
-    @Length(min=0,max=512)
+    @Length(min=0,max=1024)
     private String description;
 }
