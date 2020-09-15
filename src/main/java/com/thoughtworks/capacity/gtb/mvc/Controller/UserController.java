@@ -33,7 +33,7 @@ public class UserController {
 
     @PostMapping("/users/{id}/educations")
     public ResponseEntity addEducations(@PathVariable Integer id,
-                                        @RequestBody Education education) {
+                                        @RequestBody @Valid Education education) {
         userService.addEducation(id, education);
         return new ResponseEntity(HttpStatus.CREATED);
     }
