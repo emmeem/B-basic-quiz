@@ -1,5 +1,6 @@
 package com.thoughtworks.capacity.gtb.mvc.Controller;
 
+import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
 import com.thoughtworks.capacity.gtb.mvc.Domain.User;
 import com.thoughtworks.capacity.gtb.mvc.Service.UserService;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,14 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userService.addUser(user));
     }
+
+    @PostMapping("/users/{id}/educations")
+    public ResponseEntity addEducations(@PathVariable Integer id,
+                                        @RequestBody Education education) {
+        userService.addEducation(id, education);
+        return new ResponseEntity(HttpStatus.CREATED);
+    }
+
 
 }
 

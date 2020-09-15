@@ -1,5 +1,6 @@
 package com.thoughtworks.capacity.gtb.mvc.Service;
 
+import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
 import com.thoughtworks.capacity.gtb.mvc.Domain.User;
 import com.thoughtworks.capacity.gtb.mvc.Repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,11 @@ public class UserService {
 
     public Integer addUser(User user) {
         return userRepository.save(user);
+    }
+
+    public void addEducation(Integer id, Education education) {
+        education.setUserId(id);
+        userRepository.saveEducation(education);
     }
 
 
