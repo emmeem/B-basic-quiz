@@ -1,5 +1,6 @@
 package com.thoughtworks.capacity.gtb.mvc.Domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
