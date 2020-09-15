@@ -33,4 +33,15 @@ public class UserRepositoryImpl implements UserRepository{
     public void saveEducation(Education education) {
         educations.add(education);
     };
+
+    @Override
+    public List<Education> findEducationByid(Integer id) {
+        List<Education> reEducations = new ArrayList<>();
+        educations.forEach(education -> {
+            if(education.getUserId() == id) {
+                reEducations.add(education);
+            }
+        });
+        return reEducations;
+    }
 }

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -33,6 +35,12 @@ public class UserController {
                                         @RequestBody Education education) {
         userService.addEducation(id, education);
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @GetMapping("/users/{id}/educations")
+    public ResponseEntity<List<Education>> getEducations(@PathVariable Integer id) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(userService.getEducationById(id));
     }
 
 

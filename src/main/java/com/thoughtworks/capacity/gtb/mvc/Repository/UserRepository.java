@@ -4,6 +4,8 @@ import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
 import com.thoughtworks.capacity.gtb.mvc.Domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository {
 
@@ -12,4 +14,6 @@ public interface UserRepository {
     User findById(Integer id);
 
     void saveEducation(Education education);
+
+    List<Education> findEducationByid(Integer id);
 }

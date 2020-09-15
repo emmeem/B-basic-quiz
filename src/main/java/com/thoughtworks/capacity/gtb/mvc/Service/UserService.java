@@ -5,6 +5,8 @@ import com.thoughtworks.capacity.gtb.mvc.Domain.User;
 import com.thoughtworks.capacity.gtb.mvc.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserService {
     private final UserRepository userRepository;
@@ -27,5 +29,8 @@ public class UserService {
         userRepository.saveEducation(education);
     }
 
+    public List<Education> getEducationById(Integer id) {
+        return userRepository.findEducationByid(id);
+    }
 
 }
