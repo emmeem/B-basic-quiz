@@ -21,13 +21,13 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Integer id) {
+    public ResponseEntity<User> getUserById(@PathVariable long id) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(userService.getUserById(id));
     }
 
     @PostMapping("/users")
-    public ResponseEntity<Integer> addUser(@RequestBody @Valid User user) {
+    public ResponseEntity<Long> addUser(@RequestBody @Valid User user) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(userService.addUser(user));
     }
@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}/educations")
-    public ResponseEntity<List<Education>> getEducations(@PathVariable Integer id) {
+    public ResponseEntity<List<Education>> getEducations(@PathVariable long id) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(userService.getEducationById(id));
     }

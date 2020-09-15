@@ -13,9 +13,9 @@ import org.hibernate.validator.constraints.Length;
 @Builder
 public class Education {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Integer userId;
+    private long userId;
 
-    private Integer year;
+    private long year;
 
     @Length(min=1,max=256)
     private String title;

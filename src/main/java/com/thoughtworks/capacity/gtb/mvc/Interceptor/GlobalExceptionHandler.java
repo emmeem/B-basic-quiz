@@ -19,13 +19,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ErrorResult> handler(MethodArgumentNotValidException ex) {
         String message = ex.getBindingResult().getFieldError().getDefaultMessage();
-        ErrorResult errorResult = new ErrorResult(df.format(new Date()),"400","Bad Request",message);
+        ErrorResult errorResult = new ErrorResult(df.format(new Date()),400,"Bad Request",message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 
     @ExceptionHandler({UserNotFoundException.class, EducationInfoIsNotExist.class})
     public ResponseEntity<ErrorResult> handler(Exception ex) {
-        ErrorResult errorResult = new ErrorResult(df.format(new Date()),"404","Not found",ex.getMessage());
+        ErrorResult errorResult = new ErrorResult(df.format(new Date()),404,"Not found",ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 

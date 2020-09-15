@@ -19,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUserById(Integer id) {
+    public User getUserById(long id) {
         User user = userRepository.findById(id);
         if(user != null) {
             return user;
@@ -27,16 +27,16 @@ public class UserService {
         throw new UserNotFoundException("用户不存在");
     }
 
-    public Integer addUser(User user) {
+    public long addUser(User user) {
         return userRepository.save(user);
     }
 
-    public void addEducation(Integer id, Education education) {
+    public void addEducation(long id, Education education) {
         education.setUserId(id);
         userRepository.saveEducation(education);
     }
 
-    public List<Education> getEducationById(Integer id) {
+    public List<Education> getEducationById(long id) {
         List<Education> education = userRepository.findEducationByid(id);
         if(education.isEmpty()) {
             throw new EducationInfoIsNotExist("教育信息不存在");

@@ -17,13 +17,13 @@ import javax.validation.constraints.Min;
 public class User {
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
-    private Integer id;
+    private long id;
 
     @Length(min=1,max=16)
     private String name;
 
     @Min(17)
-    private Integer age;
+    private long age;
 
     @Length(min=8,max=512)
     private String avatar;

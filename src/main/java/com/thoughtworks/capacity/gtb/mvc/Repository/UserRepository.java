@@ -9,11 +9,11 @@ import java.util.List;
 @Repository
 public interface UserRepository {
 
-    Integer save(User user);
+    long save(User user);
 
-    User findById(Integer id);
+    User findById(long id);
 
     void saveEducation(Education education);
 
-    List<Education> findEducationByid(Integer id);
+    List<Education> findEducationByid(long id);
 }
