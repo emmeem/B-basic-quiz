@@ -36,6 +36,8 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public List<Education> findEducationByid(long id) {
+        // GTB: - 什么叫 reEducations？
+        // GTB: - 了解一下 Stream API
         List<Education> reEducations = new ArrayList<>();
         educations.forEach(education -> {
             if(education.getUserId() == id) {

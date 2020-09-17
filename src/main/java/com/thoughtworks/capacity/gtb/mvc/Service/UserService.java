@@ -32,12 +32,14 @@ public class UserService {
     }
 
     public void addEducation(long id, Education education) {
+        // GTB: - id 不存在也要保存这个 education 吗？
         education.setUserId(id);
         userRepository.saveEducation(education);
     }
 
     public List<Education> getEducationById(long id) {
         List<Education> education = userRepository.findEducationByid(id);
+        // GTB: 为空时就返回 [] 就行了，不需要抛异常
         if(education.isEmpty()) {
             throw new EducationInfoIsNotExist("教育信息不存在");
         }

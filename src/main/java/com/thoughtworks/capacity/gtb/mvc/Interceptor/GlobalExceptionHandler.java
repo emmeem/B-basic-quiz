@@ -1,5 +1,5 @@
 package com.thoughtworks.capacity.gtb.mvc.Interceptor;
-
+// GTB: - ↑ package name 叫 Interceptor 合适吗？
 import com.thoughtworks.capacity.gtb.mvc.Error.ErrorResult;
 import com.thoughtworks.capacity.gtb.mvc.Exception.EducationInfoIsNotExist;
 import com.thoughtworks.capacity.gtb.mvc.Exception.UserNotFoundException;

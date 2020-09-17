@@ -1,5 +1,5 @@
 package com.thoughtworks.capacity.gtb.mvc.Controller;
-
+// GTB: - ↑ package name 里一般不会使用大写字母
 import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
 import com.thoughtworks.capacity.gtb.mvc.Domain.User;
 import com.thoughtworks.capacity.gtb.mvc.Service.UserService;
@@ -33,6 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/users/{id}/educations")
+    // GTB: - @ResponseStatus 了解一下
     public ResponseEntity addEducations(@PathVariable Integer id,
                                         @RequestBody @Valid Education education) {
         userService.addEducation(id, education);
