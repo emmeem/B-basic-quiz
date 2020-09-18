@@ -34,8 +34,7 @@ public class UserController {
 
     @PostMapping("/{id}/educations")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addEducations(@PathVariable Integer id,
-                                        @RequestBody @Valid Education education) {
+    public void addEducations(@PathVariable Integer id, @RequestBody @Valid Education education) {
         userService.addEducation(id, education);
     }
 
@@ -44,7 +43,5 @@ public class UserController {
     public List<Education> getEducations(@PathVariable long id) {
         return userService.getEducationById(id);
     }
-
-
 }
 
