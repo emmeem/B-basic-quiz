@@ -1,7 +1,7 @@
-package com.thoughtworks.capacity.gtb.mvc.Repository;
+package com.thoughtworks.capacity.gtb.mvc.repository;
 
-import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
-import com.thoughtworks.capacity.gtb.mvc.Domain.User;
+import com.thoughtworks.capacity.gtb.mvc.domain.Education;
+import com.thoughtworks.capacity.gtb.mvc.domain.User;
 import org.springframework.stereotype.Repository;
 
 
@@ -35,13 +35,13 @@ public class UserRepositoryImpl implements UserRepository{
     };
 
     @Override
-    public List<Education> findEducationByid(long id) {
-        List<Education> reEducations = new ArrayList<>();
+    public List<Education> findEducationById(long id) {
+        List<Education> educationsToReturn = new ArrayList<>();
         educations.forEach(education -> {
             if(education.getUserId() == id) {
-                reEducations.add(education);
+                educationsToReturn.add(education);
             }
         });
-        return reEducations;
+        return educationsToReturn;
     }
 }

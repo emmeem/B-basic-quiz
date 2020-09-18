@@ -1,14 +1,12 @@
-package com.thoughtworks.capacity.gtb.mvc.Service;
+package com.thoughtworks.capacity.gtb.mvc.service;
 
-import com.thoughtworks.capacity.gtb.mvc.Domain.Education;
-import com.thoughtworks.capacity.gtb.mvc.Domain.User;
-import com.thoughtworks.capacity.gtb.mvc.Exception.EducationInfoIsNotExist;
-import com.thoughtworks.capacity.gtb.mvc.Exception.UserNotFoundException;
-import com.thoughtworks.capacity.gtb.mvc.Repository.UserRepository;
+import com.thoughtworks.capacity.gtb.mvc.domain.Education;
+import com.thoughtworks.capacity.gtb.mvc.domain.User;
+import com.thoughtworks.capacity.gtb.mvc.exception.UserNotFoundException;
+import com.thoughtworks.capacity.gtb.mvc.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {
@@ -32,16 +30,20 @@ public class UserService {
     }
 
     public void addEducation(long id, Education education) {
+        User user = userRepository.findById(id);
+        if(user == null ) {
+            throw new UserNotFoundException("用户不存在");
+        }
         education.setUserId(id);
         userRepository.saveEducation(education);
     }
 
     public List<Education> getEducationById(long id) {
-        List<Education> education = userRepository.findEducationByid(id);
-        if(education.isEmpty()) {
-            throw new EducationInfoIsNotExist("教育信息不存在");
+        List<Education> educations = userRepository.findEducationById(id);
+        if(educations.isEmpty()) {
+            return null;
         }
-        return userRepository.findEducationByid(id);
+        return educations;
     }
 
 }

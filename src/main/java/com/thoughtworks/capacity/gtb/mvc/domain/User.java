@@ -1,4 +1,4 @@
-package com.thoughtworks.capacity.gtb.mvc.Domain;
+package com.thoughtworks.capacity.gtb.mvc.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

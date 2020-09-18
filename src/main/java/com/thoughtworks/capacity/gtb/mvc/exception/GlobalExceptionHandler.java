@@ -1,8 +1,6 @@
-package com.thoughtworks.capacity.gtb.mvc.Interceptor;
+package com.thoughtworks.capacity.gtb.mvc.exception;
 
-import com.thoughtworks.capacity.gtb.mvc.Error.ErrorResult;
-import com.thoughtworks.capacity.gtb.mvc.Exception.EducationInfoIsNotExist;
-import com.thoughtworks.capacity.gtb.mvc.Exception.UserNotFoundException;
+import com.thoughtworks.capacity.gtb.mvc.error.ErrorResult;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -23,8 +21,8 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
 
-    @ExceptionHandler({UserNotFoundException.class, EducationInfoIsNotExist.class})
-    public ResponseEntity<ErrorResult> handler(Exception ex) {
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<ErrorResult> handler(UserNotFoundException ex) {
         ErrorResult errorResult = new ErrorResult(df.format(new Date()),404,"Not found",ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
